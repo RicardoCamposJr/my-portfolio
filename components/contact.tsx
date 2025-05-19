@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { motion } from "framer-motion"
-import { useState } from "react"
-import { Send, Mail, Phone, MapPin } from "lucide-react"
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Send, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,30 +12,32 @@ export default function Contact() {
     email: "",
     subject: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulando envio do formulário
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    setIsSubmitting(false)
-    setSubmitSuccess(true)
-    setFormData({ name: "", email: "", subject: "", message: "" })
+    setIsSubmitting(false);
+    setSubmitSuccess(true);
+    setFormData({ name: "", email: "", subject: "", message: "" });
 
     // Reset success message after 3 seconds
-    setTimeout(() => setSubmitSuccess(false), 3000)
-  }
+    setTimeout(() => setSubmitSuccess(false), 3000);
+  };
 
   const contactInfo = [
     {
@@ -56,7 +58,7 @@ export default function Contact() {
       content: "São Paulo, Brasil",
       link: "https://maps.google.com/?q=São+Paulo",
     },
-  ]
+  ];
 
   return (
     <section id="contact" className="py-20 bg-dark/50">
@@ -69,15 +71,16 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-primary">&lt;</span> Contato <span className="text-primary">/&gt;</span>
+            <span className="text-primary">&lt;</span> Contato{" "}
+            <span className="text-primary">/&gt;</span>
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Tem um projeto em mente? Vamos conversar! Preencha o formulário abaixo ou entre em contato através de um dos
-            canais disponíveis.
+            Tem um projeto em mente? Vamos conversar! Preencha o formulário
+            abaixo ou entre em contato através de um dos canais disponíveis.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-12 w-4/5 mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -112,10 +115,16 @@ export default function Contact() {
             viewport={{ once: true }}
             className="md:col-span-2"
           >
-            <form onSubmit={handleSubmit} className="bg-dark/80 backdrop-blur-sm p-6 rounded-lg border border-gray-800">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-dark/80 backdrop-blur-sm p-6 rounded-lg border border-gray-800"
+            >
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Nome
                   </label>
                   <input
@@ -129,7 +138,10 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Email
                   </label>
                   <input
@@ -144,7 +156,10 @@ export default function Contact() {
                 </div>
               </div>
               <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium mb-2"
+                >
                   Assunto
                 </label>
                 <input
@@ -158,7 +173,10 @@ export default function Contact() {
                 />
               </div>
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-2"
+                >
                   Mensagem
                 </label>
                 <textarea
@@ -204,5 +222,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
