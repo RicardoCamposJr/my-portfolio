@@ -9,7 +9,9 @@ export default function Hero() {
   const [text, setText] = useState("");
   const fullText = "Desenvolvedor Full Stack";
   const [index, setIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Animação do texto digitando
   useEffect(() => {
     if (index < fullText.length) {
       const timeout = setTimeout(() => {
@@ -20,6 +22,14 @@ export default function Hero() {
       return () => clearTimeout(timeout);
     }
   }, [index, fullText]);
+
+  // Detecta se é mobile (abaixo de 768px)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile(); // roda na montagem
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <section
@@ -37,7 +47,13 @@ export default function Hero() {
             Olá, eu sou
             <span className="block text-primary mt-2">Ricardo Campos</span>
           </h1>
-          <h2 className="text-2xl md:text-3xl font-light mb-6 h-8">
+          <h2
+            className={
+              isMobile
+                ? "text-xl font-light mb-6 h-8"
+                : "text-2xl md:text-3xl font-light mb-6 h-8"
+            }
+          >
             {text}
             <span className="animate-pulse">|</span>
           </h2>
@@ -55,14 +71,16 @@ export default function Hero() {
             >
               Ver Projetos
             </motion.a>
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-primary hover:bg-primary/10 px-6 py-3 rounded-md transition-colors duration-300 inline-flex items-center"
-            >
-              Contato
-            </motion.a>
+            {!isMobile && (
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-primary hover:bg-primary/10 px-6 py-3 rounded-md transition-colors duration-300 inline-flex items-center"
+              >
+                Contato
+              </motion.a>
+            )}
           </div>
         </motion.div>
 

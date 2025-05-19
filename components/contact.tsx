@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Send, Mail, Phone, MapPin } from "lucide-react";
 import emailjs from "emailjs-com";
 import { toast } from "react-toastify";
@@ -18,6 +18,7 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -70,6 +71,14 @@ export default function Contact() {
     },
   ];
 
+  // Detecta se é mobile (abaixo de 768px)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 1024);
+    checkMobile(); // roda na montagem
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section id="contact" className="py-20 bg-dark/50">
       <div className="container mx-auto px-4">
@@ -90,13 +99,19 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12 w-4/5 mx-auto">
+        <div
+          className={
+            isMobile
+              ? "gap-8 md:gap-12 w-4/5 mx-auto flex-col justify-center"
+              : "grid md:grid-cols-3 gap-8 md:gap-12 w-4/5 mx-auto"
+          }
+        >
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="md:col-span-1 space-y-8"
+            className="md:col-span-1 space-y-8 mb-8"
           >
             {contactInfo.map((info, index) => (
               <motion.a

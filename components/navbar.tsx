@@ -90,7 +90,7 @@ export default function Navbar() {
           exit={{ opacity: 0, height: 0 }}
           className="md:hidden bg-dark/95 backdrop-blur-md"
         >
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          <div className="container mx-auto px-4 py-11 flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -101,13 +101,13 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link
+            {/* <Link
               href="#contact"
               className="bg-primary hover:bg-primary/80 text-white px-4 py-2 rounded-md transition-colors duration-300 inline-block"
               onClick={() => setIsOpen(false)}
             >
               Contrate-me
-            </Link>
+            </Link> */}
           </div>
         </motion.div>
       )}
