@@ -43,20 +43,14 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      content: "contato@exemplo.com",
-      link: "mailto:contato@exemplo.com",
+      content: "rickoliver001@hotmail.com",
+      link: "mailto:rickoliver001@hotmail.com",
     },
     {
       icon: Phone,
       title: "Telefone",
-      content: "+55 (11) 98765-4321",
-      link: "tel:+5511987654321",
-    },
-    {
-      icon: MapPin,
-      title: "Localização",
-      content: "São Paulo, Brasil",
-      link: "https://maps.google.com/?q=São+Paulo",
+      content: "+55 (75) 98182-6826",
+      link: "tel:+5575981826826",
     },
   ];
 

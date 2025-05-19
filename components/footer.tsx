@@ -5,10 +5,16 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    {
+      icon: Github,
+      href: "https://github.com/RicardoCamposJr",
+      label: "GitHub",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/ricardocamposdeoliveirajr",
+      label: "LinkedIn",
+    },
   ];
 
   return (
