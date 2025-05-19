@@ -22,7 +22,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center w-4/5 mx-auto">
           <div className="mb-4 md:mb-0">
-            <Link href="/" className="text-xl font-bold text-primary">
+            <Link href="/#home" className="text-xl font-bold text-primary">
               Dev<span className="text-white">Portfolio</span>
             </Link>
             <p className="text-gray-400 text-sm mt-2">

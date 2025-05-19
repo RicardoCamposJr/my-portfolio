@@ -5,6 +5,8 @@ import type React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Send, Mail, Phone, MapPin } from "lucide-react";
+import emailjs from "emailjs-com";
+import { toast } from "react-toastify";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -28,15 +30,29 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulando envio do formulário
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string,
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          time: new Date().toLocaleString(),
+        },
+        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY as string
+      );
 
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-
-    // Reset success message after 3 seconds
-    setTimeout(() => setSubmitSuccess(false), 3000);
+      setSubmitSuccess(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      toast("Ocorreu um erro ao enviar sua mensagem.", { type: "error" });
+      console.error("Erro ao enviar email:", error);
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitSuccess(false), 3000);
+    }
   };
 
   const contactInfo = [
@@ -128,7 +144,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-dark/90 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
+                    className="w-full bg-dark/90 border border-gray-700 rounded-md px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -145,7 +161,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-dark/90 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
+                    className="w-full bg-dark/90 border border-gray-700 rounded-md px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -163,7 +179,7 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full bg-dark/90 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
+                  className="w-full bg-dark/90 border border-gray-700 rounded-md px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
                 />
               </div>
               <div className="mb-6">
@@ -180,7 +196,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full bg-dark/90 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent resize-none"
+                  className="w-full bg-dark/90 border border-gray-700 rounded-md px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent resize-none"
                 ></textarea>
               </div>
               <div className="flex justify-end">
