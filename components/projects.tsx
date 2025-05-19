@@ -11,47 +11,47 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Moderno",
+      title: "TechNanas - Plataforma EAD",
       description:
-        "Plataforma de e-commerce completa com pagamentos, carrinho e painel administrativo.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["Next.js", "Node.js", "MongoDB"],
+        "Plataforma EAD para cursos relacionados a tecnologia e afins.",
+      image: "/technana.png",
+      tags: ["Next.js", "Node.js", "MySQL"],
       category: "Full Stack",
-      demoLink: "#",
-      githubLink: "#",
+      // demoLink: "#",
+      githubLink:
+        "https://github.com/RicardoCamposJr/TechNanas/blob/master/README.md",
     },
     {
       id: 2,
-      title: "Dashboard Analytics",
+      title: "Site Institucional EcompJr",
       description:
-        "Dashboard interativo para visualização de dados e métricas de negócios.",
-      image: "/placeholder.svg?height=400&width=600",
+        "Projeto de site da empresa júnior de Engenharia da Computação, da Universidade Estasual de Feira de Santana (UEFS).",
+      image: "/ecomp.jpg",
       tags: ["React", "TypeScript", "Express"],
       category: "Frontend",
-      demoLink: "#",
-      githubLink: "#",
+      demoLink: "https://master--heartfelt-trifle-6cfeed.netlify.app/",
+      githubLink: "https://github.com/RicardoCamposJr/landing-page-ecompjr",
     },
     {
       id: 3,
-      title: "API de Gestão",
+      title: "Saas de Gestão - Shelfy",
       description:
-        "API RESTful para sistema de gestão empresarial com autenticação JWT.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["Node.js", "Express", "PostgreSQL"],
-      category: "Backend",
-      demoLink: "#",
-      githubLink: "#",
+        "Sistema de gestão de estoque com autenticação JWT, planos e multiusuários",
+      image: "/shelfy.png",
+      tags: ["Nest.js", "Typescript", "MySQL", "Next.js", "Em construção..."],
+      category: "Full Stack",
+      // demoLink: "#",
+      githubLink: "https://github.com/RicardoCamposJr/shelfy",
     },
     {
       id: 4,
-      title: "App de Finanças",
-      description:
-        "Aplicativo para controle financeiro pessoal com gráficos e relatórios.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["React", "Firebase", "Tailwind"],
+      title: "StarBooks",
+      description: "Plataforma para compra e venda de e-books.",
+      image: "/image21.png",
+      tags: ["Next.js", "React", "Node.js"],
       category: "Full Stack",
-      demoLink: "#",
-      githubLink: "#",
+      // demoLink: "#",
+      githubLink: "https://github.com/starbooks-uefs/starbooks_frontend",
     },
   ];
 
@@ -98,7 +98,7 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        <div className="flex justify-center flex-wrap gap-4 mb-12">
+        {/* <div className="flex justify-center flex-wrap gap-4 mb-12">
           {filters.map((filter) => (
             <motion.button
               key={filter}
@@ -114,7 +114,7 @@ export default function Projects() {
               {filter}
             </motion.button>
           ))}
-        </div>
+        </div> */}
 
         <motion.div
           variants={container}
@@ -157,14 +157,16 @@ export default function Projects() {
                   ))}
                 </div>
                 <div className="flex gap-4">
-                  <a
-                    href={project.demoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
-                  >
-                    <ExternalLink size={16} /> Demo
-                  </a>
+                  {project.demoLink && (
+                    <a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+                    >
+                      <ExternalLink size={16} /> Demo
+                    </a>
+                  )}
                   <a
                     href={project.githubLink}
                     target="_blank"
