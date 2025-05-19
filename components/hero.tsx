@@ -24,9 +24,9 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center relative pt-20"
+      className="min-h-screen flex items-center relative pt-20 mx-auto w-4/5"
     >
-      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+      <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -59,7 +59,7 @@ export default function Hero() {
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-md transition-colors duration-300 inline-flex items-center"
+              className="text-primary hover:bg-primary/10 px-6 py-3 rounded-md transition-colors duration-300 inline-flex items-center"
             >
               Contato
             </motion.a>
@@ -74,7 +74,7 @@ export default function Hero() {
         >
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl shadow-primary/20">
             <Image
-              src="/placeholder.svg?height=320&width=320"
+              src="/profile-photo.jpg"
               alt="Desenvolvedor"
               fill
               className="object-cover"

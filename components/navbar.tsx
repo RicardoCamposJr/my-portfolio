@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+      setScrolled(window.scrollY > 50);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "Tecnologias", href: "#skills" },
     { name: "Projetos", href: "#projects" },
     { name: "Contato", href: "#contact" },
-  ]
+  ];
 
   return (
     <header
@@ -31,9 +31,13 @@ export default function Navbar() {
         scrolled ? "bg-dark/90 backdrop-blur-md py-2" : "bg-transparent py-4"
       }`}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container mx-auto w-4/5 px-4 flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold text-primary">
-          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             Dev<span className="text-white">Portfolio</span>
           </motion.span>
         </Link>
@@ -47,12 +51,15 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
             >
-              <Link href={link.href} className="text-gray-300 hover:text-primary transition-colors duration-300">
+              <Link
+                href={link.href}
+                className="text-gray-300 hover:text-primary transition-colors duration-300"
+              >
                 {link.name}
               </Link>
             </motion.div>
           ))}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
@@ -63,11 +70,14 @@ export default function Navbar() {
             >
               Contrate-me
             </Link>
-          </motion.div>
+          </motion.div> */}
         </nav>
 
         {/* Mobile Navigation Toggle */}
-        <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
+        <button
+          className="md:hidden text-white"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -102,5 +112,5 @@ export default function Navbar() {
         </motion.div>
       )}
     </header>
-  )
+  );
 }
