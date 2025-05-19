@@ -21,7 +21,7 @@ export default function Footer() {
     <footer className="py-8 border-t border-gray-800">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center w-4/5 mx-auto">
-          <div className="mb-4 md:mb-0">
+          <div className="mb-4 md:mb-0 flex flex-col items-center justify-center text-center md:items-start md:justify-start md:text-left">
             <Link href="/#home" className="text-xl font-bold text-primary">
               Dev<span className="text-white">Portfolio</span>
             </Link>
